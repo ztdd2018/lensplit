@@ -1052,7 +1052,10 @@ class MainWindow(QMainWindow):
         self._session_path = None
         self._set_dirty(False)
         self._refresh_project()
-        self.statusBar().showMessage("视频已导入，请选择本地检测引擎")
+        if self.engine_combo.currentData() == "transnet":
+            self.statusBar().showMessage("视频已导入，可以开始分析")
+        else:
+            self.statusBar().showMessage("视频已导入，当前为快速模式（未加载 AI 模型）")
 
     def _update_video_labels(self) -> None:
         if not self.video_path:

@@ -890,7 +890,7 @@ class ShootingTablePage(QWidget):
         for actor in actors:
             suffix = ""
             if day:
-                suffix = " ✓" if actor.is_available(day) else " ✕ 档期冲突"
+                suffix = " √" if actor.is_available(day) else " × 档期冲突"
             lines.append(f"{actor.name} · {actor.window_text()}{suffix}")
         return "\n".join(lines)
 

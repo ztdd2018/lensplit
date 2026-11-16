@@ -359,7 +359,7 @@ class ActorSchedulePage(QWidget):
                 status.setText(f"{len(issues)} 镜越界")
                 status.setForeground(QColor("#ff8b8b"))
             elif shots:
-                status.setText("✓ 全部在档期内")
+                status.setText("√ 全部在档期内")
                 status.setForeground(QColor("#7ee2a8"))
             else:
                 status.setText(actor.window_text())
@@ -384,7 +384,7 @@ class ActorSchedulePage(QWidget):
     def _bar_tooltip(self, actor: Actor, states: list[tuple[date, bool]]) -> str:
         lines = [f"{actor.name} · 档期 {actor.window_text()}"]
         for day, inside in states:
-            lines.append(f"{day.isoformat()} {'✓ 在档期内' if inside else '✕ 档期外'}")
+            lines.append(f"{day.isoformat()} {'√ 在档期内' if inside else '× 档期外'}")
         return "\n".join(lines)
 
     def _update_summary(self) -> None:
@@ -495,7 +495,7 @@ class ActorSchedulePage(QWidget):
                 status.setText(f"{len(issues)} 镜越界")
                 status.setForeground(QColor("#ff8b8b"))
             elif shots:
-                status.setText("✓ 全部在档期内")
+                status.setText("√ 全部在档期内")
                 status.setForeground(QColor("#7ee2a8"))
             else:
                 status.setText(actor.window_text())
@@ -587,13 +587,13 @@ class ActorSchedulePage(QWidget):
             issue = by_group.get(group_uuid)
             status = QTableWidgetItem()
             if issue is None:
-                status.setText("✓ 在档期内")
+                status.setText("√ 在档期内")
                 status.setForeground(QColor("#7ee2a8"))
             elif issue.kind == "empty":
                 status.setText("档期未填写")
                 status.setForeground(QColor("#ffc35c"))
             else:
-                status.setText("✕ 档期外")
+                status.setText("× 档期外")
                 status.setForeground(QColor("#ff8b8b"))
             if issue is not None:
                 status.setToolTip(issue.message)
