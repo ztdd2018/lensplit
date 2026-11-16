@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+
+# Local scratch and screenshots
+.tmp_verify/
+.tmp_person_check/
+.screenshots/
+.trae/
+
+# Lensplit working files
+*.lensplit
+*.lsp
+
+# Model download caches (weights themselves are committed / tracked by LFS)
+models/**/.cache/
+
+# Large whisper weights are fetched with scripts/download_models.py
+models/whisper-small/model.bin

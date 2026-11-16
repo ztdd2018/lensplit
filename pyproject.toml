@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lensplit"
+version = "0.1.0"
+description = "Local video shot splitting and merging"
+requires-python = ">=3.10"
+dependencies = [
+    "PySide6>=6.6",
+    "av>=11",
+    "numpy>=1.24",
+    "onnxruntime>=1.16",
+]
+
+[project.optional-dependencies]
+# The CPU onnxruntime wheel conflicts with these provider-specific wheels.
+# For a GPU installation, replace the base wheel with the selected extra's wheel.
+dml = ["onnxruntime-directml>=1.16"]
+cuda = ["onnxruntime-gpu>=1.16"]
+dev = ["pytest"]
+
+[project.scripts]
+lensplit = "lensplit.__main__:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
